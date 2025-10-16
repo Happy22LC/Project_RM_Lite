@@ -1,7 +1,9 @@
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+
 
 
 public enum TileType { Red, Blue, Green, Yellow, Purple, Orange }
@@ -270,11 +272,23 @@ public class Board : MonoBehaviour
         }
 
         // Win/Lose checks
+        //bool allCleared = (goals != null && goals.TrueForAll(g => g.count <= 0));
+        //if (allCleared)
+        //{
+        //    if (winPanel) winPanel.SetActive(true);
+        //    inputLocked = false;
+        //    yield break;
+        //}
+
         bool allCleared = (goals != null && goals.TrueForAll(g => g.count <= 0));
         if (allCleared)
         {
             if (winPanel) winPanel.SetActive(true);
-            inputLocked = false;
+            if (autoAdvanceOnWin)
+            {
+                inputLocked = true;                         // lock input while we wait
+                Invoke(nameof(LoadNextLevel), nextLevelDelay);
+            }
             yield break;
         }
 
@@ -470,18 +484,39 @@ public class Board : MonoBehaviour
         yield return new WaitForSeconds(0.15f);
     }
 
+    //IEnumerator AnimateFall(Tile t, int spaces)
+    //{
+    //    //  ignore 'spaces' for the target; always fall TO the exact cell
+    //    Vector3 target = CellPos(t.x, t.y);
+
+    //    while ((t.transform.position - target).sqrMagnitude > 0.0001f)
+    //    {
+    //        t.transform.position = Vector3.MoveTowards(
+    //            t.transform.position, target, Time.deltaTime * 8f);
+    //        yield return null;
+    //    }
+    //    t.transform.position = target;
+    //}
     IEnumerator AnimateFall(Tile t, int spaces)
     {
-        //  ignore 'spaces' for the target; always fall TO the exact cell
+        if (endingLevel || !Alive(t)) yield break;
+
         Vector3 target = CellPos(t.x, t.y);
 
-        while ((t.transform.position - target).sqrMagnitude > 0.0001f)
+        while (!endingLevel && Alive(t) &&
+               (t.transform.position - target).sqrMagnitude > 0.0001f)
         {
+            // bail out immediately if the tile was destroyed mid-loop
+            if (!Alive(t)) yield break;
+
             t.transform.position = Vector3.MoveTowards(
                 t.transform.position, target, Time.deltaTime * 8f);
+
             yield return null;
         }
-        t.transform.position = target;
+
+        if (Alive(t))
+            t.transform.position = target;
     }
 
     IEnumerator RefillBoard()
@@ -497,7 +532,7 @@ public class Board : MonoBehaviour
                     var t = grid[x, y];
                     t.transform.position = CellPos(x, y) + new Vector3(0f, spacing * spaces, 0f);
 
-                    StartCoroutine(AnimateFall(t, spaces)); // you can still pass spaces
+                    StartCoroutine(AnimateFall(t, spaces)); //  pass spaces
                 }
         yield return new WaitForSeconds(0.2f);
     }
@@ -532,7 +567,7 @@ public class Board : MonoBehaviour
             if (hit)
             {
                 var t = hit.GetComponent<Tile>();
-                if (t != null) Select(t); // same Select() you already have
+                if (t != null) Select(t); // same Select() i already have
             }
         }
     }
@@ -544,5 +579,34 @@ public class Board : MonoBehaviour
         if (nx < 0 || nx >= width || ny < 0 || ny >= height) return null;
         return grid[nx, ny];
     }
+
+    // for level 2, need to work farther
+    [Header("Scene Flow")]
+    public bool autoAdvanceOnWin = true;
+    public float nextLevelDelay = 1.5f;   // seconds
+    private bool endingLevel = false;  // guards coroutines when finishing the level
+
+    public void LoadNextLevel()
+    {
+        int next = SceneManager.GetActiveScene().buildIndex + 1;
+        if (next < SceneManager.sceneCountInBuildSettings)
+            SceneManager.LoadScene(next);          //  Level2
+        else
+            SceneManager.LoadScene("MainMenu");    // fallback if no next scene
+    }
+    private IEnumerator LoadNextAfterDelay(float d)
+    {
+        yield return new WaitForSeconds(d);
+        LoadNextLevel();
+    }
+
+    // (Optional hooks for UI buttons on Win/Lose panels) will worl later may be after 10/16 submission
+    public void OnWinNextButton() => LoadNextLevel();
+    public void OnMainMenuButton() => SceneManager.LoadScene("MainMenu");
+    public void OnRestartButton() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+
+    //for prevent the tile broken
+
 
 }
