@@ -1,0 +1,116 @@
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
+public class MainMenuBuilder : MonoBehaviour
+{
+    [Header("Scene Names")]
+    public string level1SceneName = "Level1";
+
+    [Header("Button Layout")]
+    public Vector2 playButtonPos = new Vector2(0, 80);
+    public Vector2 quitButtonPos = new Vector2(0, -80);
+    public Vector2 buttonSize = new Vector2(280, 96);
+    public int fontSize = 48;
+
+    private Canvas canvas;
+    private GameManager gm;
+
+    void Awake()
+    {
+        BuildIfNeeded();
+    }
+
+    void BuildIfNeeded()
+    {
+        // 1) Canvas
+        canvas = FindObjectOfType<Canvas>();
+        if (canvas == null)
+        {
+            var cgo = new GameObject("Canvas", typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
+            canvas = cgo.GetComponent<Canvas>();
+            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+
+            var scaler = cgo.GetComponent<CanvasScaler>();
+            scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            scaler.referenceResolution = new Vector2(1920, 1080);
+            scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
+            scaler.matchWidthOrHeight = 0.5f;
+        }
+
+        // 2) EventSystem
+        if (FindObjectOfType<EventSystem>() == null)
+        {
+            var es = new GameObject("EventSystem", typeof(EventSystem), typeof(StandaloneInputModule));
+        }
+
+        // 3) GameManager
+        gm = FindObjectOfType<GameManager>();
+        if (gm == null)
+        {
+            var ggo = new GameObject("GameManager");
+            gm = ggo.AddComponent<GameManager>();
+            gm.nextSceneName = level1SceneName;
+        }
+
+        // 4) Buttons
+        if (canvas.transform.Find("PlayButton") == null)
+        {
+            var play = CreateButton("PlayButton", "Play", playButtonPos);
+            // Wire: Play → LoadScene(level1)
+            play.onClick.AddListener(() => gm.LoadScene(level1SceneName));
+        }
+
+        if (canvas.transform.Find("QuitButton") == null)
+        {
+            var quit = CreateButton("QuitButton", "Quit", quitButtonPos);
+            // Wire: Quit → Quit()
+            quit.onClick.AddListener(() => gm.Quit());
+        }
+    }
+
+    Button CreateButton(string name, string label, Vector2 anchoredPos)
+    {
+        // Parent: Canvas
+        var bgo = new GameObject(name, typeof(RectTransform), typeof(Image), typeof(Button));
+        bgo.transform.SetParent(canvas.transform, false);
+
+        // RectTransform (center anchor)
+        var rt = bgo.GetComponent<RectTransform>();
+        rt.anchorMin = rt.anchorMax = rt.pivot = new Vector2(0.5f, 0.5f);
+        rt.anchoredPosition = anchoredPos;
+        rt.sizeDelta = buttonSize;
+
+        // Visuals
+        var img = bgo.GetComponent<Image>();
+        img.color = new Color(0.18f, 0.29f, 0.55f, 1f); // royal-ish blue
+
+        // Button settings
+        var btn = bgo.GetComponent<Button>();
+        btn.targetGraphic = img;
+        var colors = btn.colors;
+        colors.highlightedColor = img.color * 1.2f;
+        colors.pressedColor = img.color * 0.8f;
+        colors.selectedColor = img.color;
+        btn.colors = colors;
+
+        // Child text
+        var tgo = new GameObject("Text", typeof(RectTransform));
+        tgo.transform.SetParent(bgo.transform, false);
+
+        var trt = tgo.GetComponent<RectTransform>();
+        trt.anchorMin = trt.anchorMax = trt.pivot = new Vector2(0.5f, 0.5f);
+        trt.anchoredPosition = Vector2.zero;
+        trt.sizeDelta = buttonSize;
+
+        // Use legacy Text to avoid TMP dependency
+        var text = tgo.AddComponent<Text>();
+        text.text = label;
+        text.alignment = TextAnchor.MiddleCenter;
+        text.color = Color.white;
+        text.fontSize = fontSize;
+        text.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+
+        return btn;
+    }
+}
