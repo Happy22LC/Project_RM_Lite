@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: bd662a18ab71ec84a95294e79a76f786
+guid: 3c3346fb1b4121c48be4a33d40421fbc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7047434807938243613
-    second: Green_Gem_0
+      213: 2572374021087124693
+    second: Pink_Gem_0
+  - first:
+      213: -9008978291731422779
+    second: Pink_Gem_1
+  - first:
+      213: -4720815003829387908
+    second: Pink_Gem_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 600
+  spritePixelsToUnits: 1050
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Green_Gem_0
+      name: Pink_Gem_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 562
-        height: 494
+        width: 1341
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3e32e1f816b723e90800000000000000
-      internalID: -7047434807938243613
+      spriteID: 5dc575c0b88e2b320800000000000000
+      internalID: 2572374021087124693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pink_Gem_1
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 0
+        width: 44
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c1a42ca9fda9f280800000000000000
+      internalID: -9008978291731422779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pink_Gem_2
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 0
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7d3a6614cb4c7eb0800000000000000
+      internalID: -4720815003829387908
       vertices: []
       indices: 
       edges: []
@@ -148,7 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Green_Gem_0: -7047434807938243613
+      Pink_Gem_0: 2572374021087124693
+      Pink_Gem_1: -9008978291731422779
+      Pink_Gem_2: -4720815003829387908
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

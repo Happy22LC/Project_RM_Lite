@@ -6,7 +6,7 @@ using TMPro;
 
 
 
-public enum TileType { Red, Blue, Green, Yellow, Purple, Orange }
+public enum TileType { Red, Blue, Green, Yellow, Purple, Orange, Pink }
 
 [System.Serializable]
 public struct ColorGoal
@@ -72,13 +72,14 @@ public class Board : MonoBehaviour
 
     void Awake()
     {
-        gemSprites = new Sprite[6];
+        gemSprites = new Sprite[7];
         gemSprites[0] = Resources.Load<Sprite>("Gems/gem_red");
         gemSprites[1] = Resources.Load<Sprite>("Gems/gem_blue");
         gemSprites[2] = Resources.Load<Sprite>("Gems/gem_green");
         gemSprites[3] = Resources.Load<Sprite>("Gems/gem_yellow");
         gemSprites[4] = Resources.Load<Sprite>("Gems/gem_purple");
         gemSprites[5] = Resources.Load<Sprite>("Gems/gem_orange");
+        gemSprites[6] = Resources.Load<Sprite>("Gems/gem_pink");
 
         swapClip = Resources.Load<AudioClip>("Audio/swap");
         matchClip = Resources.Load<AudioClip>("Audio/match");
