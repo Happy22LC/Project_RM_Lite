@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: b868537373c04ab468f124cb5c2e2a83
+guid: 3490f5ee9f4214b4cbfbb5849cbd9de4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 130097611342542251
-    second: Red_Gem_0
-  - first:
-      213: -4258445734318417934
-    second: Red_Gem_1
-  - first:
-      213: -5289760381866671072
-    second: Red_Gem_2
-  - first:
-      213: -4171778169923921172
-    second: Red_Gem_3
+      213: -9177846305633877146
+    second: Level2Back_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 800
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -122,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Red_Gem_0
+      name: Level2Back_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 930
-        height: 945
+        width: 3508
+        height: 2480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,74 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ba5f23696133ec100800000000000000
-      internalID: 130097611342542251
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Red_Gem_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 509
-        width: 6
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2f75ca6ba26f6e4c0800000000000000
-      internalID: -4258445734318417934
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Red_Gem_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 456
-        width: 14
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 02407e385fef696b0800000000000000
-      internalID: -5289760381866671072
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Red_Gem_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 156
-        height: 181
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cea94f38bddda16c0800000000000000
-      internalID: -4171778169923921172
+      spriteID: 663cf8d496db1a080800000000000000
+      internalID: -9177846305633877146
       vertices: []
       indices: 
       edges: []
@@ -213,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -223,10 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Red_Gem_0: 130097611342542251
-      Red_Gem_1: -4258445734318417934
-      Red_Gem_2: -5289760381866671072
-      Red_Gem_3: -4171778169923921172
+      Level2Back_0: -9177846305633877146
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

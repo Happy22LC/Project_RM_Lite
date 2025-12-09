@@ -171,6 +171,7 @@ public class Board : MonoBehaviour
         var sr = go.AddComponent<SpriteRenderer>();
         sr.sprite = gemSprites[(int)type];
         sr.sortingOrder = 5;
+        sr.sortingLayerName = "Gems";   // ADD THIS LINE
 
         var col = go.AddComponent<CircleCollider2D>();
         col.radius = 0.48f;
@@ -182,6 +183,9 @@ public class Board : MonoBehaviour
         go.transform.position = CellPos(x, y);
 
         grid[x, y] = tile;
+
+        //debug
+        //Debug.Log($"Creating tile at {x}, {y} of type {type}");
     }
 
     public void Select(Tile t)
