@@ -52,6 +52,8 @@ public class Board : MonoBehaviour
     private Sprite[] gemSprites;
     private AudioSource audioSource;
     private AudioClip swapClip, matchClip;
+    private AudioClip winClip, loseClip;
+
     private int score = 0;
     private bool inputLocked = false;
 
@@ -84,6 +86,11 @@ public class Board : MonoBehaviour
         swapClip = Resources.Load<AudioClip>("Audio/swap");
         matchClip = Resources.Load<AudioClip>("Audio/match");
 
+        //win and lose music
+        winClip = Resources.Load<AudioClip>("Audio/win");
+        loseClip = Resources.Load<AudioClip>("Audio/lose");
+
+
         audioSource = gameObject.AddComponent<AudioSource>();
     }
 
@@ -91,6 +98,9 @@ public class Board : MonoBehaviour
     {
         SetupBoard();
         UpdateUI();
+        //Debug
+        Debug.Log("WIN CLIP = " + (winClip ? "Loaded" : "NOT LOADED"));
+        Debug.Log("LOSE CLIP = " + (loseClip ? "Loaded" : "NOT LOADED"));
     }
 
     //void SetupBoard()
@@ -288,6 +298,8 @@ public class Board : MonoBehaviour
         bool allCleared = (goals != null && goals.TrueForAll(g => g.count <= 0));
         if (allCleared)
         {
+            if (winClip) audioSource.PlayOneShot(winClip);// for win lose audio
+
             if (winPanel) winPanel.SetActive(true);
             if (autoAdvanceOnWin)
             {
