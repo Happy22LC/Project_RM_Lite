@@ -1,0 +1,12 @@
+# ninja log v5
+125	1320	7870363512480530	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	bcf68899efad92be
+1326	1993	7870363519729948	C:/Users/natha/Documents/Happy/RoyalMatchLite/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/621y313s/obj/arm64-v8a/libswappywrapper.so	b680569cd4ee5983
+55	4234	7870363538476468	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	ec8103b23cadc26c
+105	4670	7870363541768491	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	c6816e06e9c86d46
+40	4679	7870363542754269	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	4006405408c24f4d
+27	4691	7870363546953570	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	26d952e541a3deb6
+16	4750	7870363547895690	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	5405cd6cbbfe3e17
+91	4800	7870363548399667	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	e6aa80f752279688
+72	4894	7870363549364080	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	a2c710e31d82718f
+2	4993	7870363550303517	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	81c4554e8d103c43
+4993	5136	7870363551785620	C:/Users/natha/Documents/Happy/RoyalMatchLite/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/621y313s/obj/arm64-v8a/libgame.so	53879b03e85dac03

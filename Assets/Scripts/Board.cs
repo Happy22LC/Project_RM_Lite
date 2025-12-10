@@ -569,6 +569,7 @@ public class Board : MonoBehaviour
         }
     }
 
+    //Pointer.current.leftButton.wasPressedThisFrame
 
 
     void Update()
